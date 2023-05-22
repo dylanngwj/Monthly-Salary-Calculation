@@ -8,7 +8,7 @@ Commission_Rate_2 = 10/100
 Sales_Threshold_3 = Sales_Threshold_2 + 90000
 Commission_Rate_3 = 20/100
 Commission_Rate_4 = 30/100
-#no Sales_Threshold_4
+#no Sales_Threshold_4 
 
 commissionEarned = 0
 deduction = 0 #penalty if sales target is not met
