@@ -18,18 +18,21 @@ if salesAmount < Sales_Threshold_1:
     deduction -= 20/100 * monthlypay
 
 if salesAmount >= Sales_Threshold_1:
-    commissionEarned += (Sales_Threshold_1 * Commission_Rate_1) # the base 5% for hitting 3.15X
+    commissionEarned += (Sales_Threshold_1 * Commission_Rate_1) # hitting 3.15X (5%)
     
-if salesAmount >= Sales_Threshold_1 and salesAmount < Sales_Threshold_2: # <90000 past 3.15X
+if salesAmount >= Sales_Threshold_1 and salesAmount < Sales_Threshold_2: # <90,000 (10%)
     commissionEarned += ((salesAmount - Sales_Threshold_1) * Commission_Rate_2)
     
-#if salesAmount > Sales_Threshold_2: 
-#    commissionEarned += (Sales_Threshold_2 - Sales_Threshold_1) * Commission_Rate_3
+if salesAmount > Sales_Threshold_2: # to cover the 10% * 90,000
+    commissionEarned += (Sales_Threshold_2 - Sales_Threshold_1) * Commission_Rate_2
 
-if salesAmount >= Sales_Threshold_2 and salesAmount < Sales_Threshold_3: # between 90,000 and 180,000
+if salesAmount >= Sales_Threshold_2 and salesAmount < Sales_Threshold_3: # between 90,000 and 180,000 (20%)
     commissionEarned += ((salesAmount - Sales_Threshold_2) * Commission_Rate_3)
 
-if salesAmount > Sales_Threshold_3: # >180,000
+if salesAmount > Sales_Threshold_3: # to cover the 20% * 90,000
+    commissionEarned += (Sales_Threshold_3 - Sales_Threshold_2) * Commission_Rate_3
+
+if salesAmount > Sales_Threshold_3: # >180,000 (30%)
     commissionEarned += ((salesAmount - Sales_Threshold_3) * Commission_Rate_4)
 
 monthlyp = (monthlypay*3 + commissionEarned + deduction*3) / 3
